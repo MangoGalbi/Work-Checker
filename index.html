@@ -179,15 +179,21 @@ function pct(sub){ return sub.budget>0?Math.min(100,Math.round(spent(sub)/sub.bu
 function today(){ return new Date().toISOString().slice(0,10); }
 function defDocs(){ return {계획서:'todo',중간보고:'none',결과보고:'todo',기안:'todo'}; }
 
-// Firebase 데이터 정규화 (누락 필드 보완)
+// Firebase 데이터 정규화 (배열/객체 변환 포함)
+function toArray(val){
+  if(!val) return [];
+  if(Array.isArray(val)) return val;
+  // Firebase가 배열을 객체로 변환한 경우 복원
+  return Object.keys(val).sort((a,b)=>Number(a)-Number(b)).map(k=>val[k]);
+}
 function normalizeProject(data){
   if(!data) return null;
   if(!data.name) return null;
-  data.subs = (data.subs || []).map(sub=>({
+  data.subs = toArray(data.subs).map(sub=>({
     name: sub.name || '',
     budget: sub.budget || 0,
-    tags: sub.tags || [],
-    expenses: (sub.expenses || []).map(e=>({ name:e.name||'', amount:e.amount||0, date:e.date||'' })),
+    tags: toArray(sub.tags),
+    expenses: toArray(sub.expenses).map(e=>({ name:e.name||'', amount:e.amount||0, date:e.date||'' })),
     docs: Object.assign({계획서:'todo',중간보고:'none',결과보고:'todo',기안:'todo'}, sub.docs||{}),
     memo: sub.memo || ''
   }));
