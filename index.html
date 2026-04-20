@@ -7,14 +7,10 @@
 <title>사업 현황 관리</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-:root {
-  --p: #1a4b8c; --pl: #2563c4; --acc: #e85d26;
-  --bg: #f0f4f8; --card: #fff; --text: #1a202c; --sub: #64748b;
-  --bd: #d1dce8; --green: #16a34a; --red: #dc2626;
-}
+:root{--p:#1a4b8c;--pl:#2563c4;--acc:#e85d26;--bg:#f0f4f8;--card:#fff;--text:#1a202c;--sub:#64748b;--bd:#d1dce8;--green:#16a34a;--red:#dc2626;}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-input{width:100%;border:1.5px solid var(--bd);border-radius:10px;padding:12px 14px;font-family:inherit;font-size:1rem;color:var(--text);background:#f8fafc;outline:none;-webkit-appearance:none;transition:border .2s}
+input,select{width:100%;border:1.5px solid var(--bd);border-radius:10px;padding:12px 14px;font-family:inherit;font-size:1rem;color:var(--text);background:#f8fafc;outline:none;-webkit-appearance:none;transition:border .2s}
 input:focus{border-color:var(--pl);background:#fff}
 .btn{background:var(--p);color:#fff;border:none;padding:13px;border-radius:10px;font-family:inherit;font-size:.92rem;font-weight:700;cursor:pointer;width:100%;transition:.15s}
 .btn:active{transform:scale(.97)}
@@ -26,50 +22,81 @@ header{background:var(--p);color:#fff;padding:14px 16px;display:flex;align-items
 main{max-width:680px;margin:0 auto;padding:16px 14px 90px}
 .login-wrap{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 60px);padding:20px}
 .login-box{background:var(--card);border-radius:18px;padding:28px 22px;width:100%;max-width:380px;box-shadow:0 4px 24px rgba(0,0,0,.1)}
-.pbar{background:linear-gradient(135deg,var(--p),var(--pl));color:#fff;border-radius:14px;padding:16px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between}
-.pbar-name{font-size:1.05rem;font-weight:700;line-height:1.3}.pbar-mgr{font-size:.78rem;opacity:.8;margin-top:3px}
-.btn-reset{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.4);padding:7px 12px;border-radius:7px;font-size:.78rem;font-family:inherit;cursor:pointer;white-space:nowrap;flex-shrink:0;margin-left:10px}
-.summary{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
-.sitem{background:var(--card);border-radius:10px;padding:12px 14px;border:1.5px solid var(--bd)}.slabel{font-size:.72rem;color:var(--sub);font-weight:500;margin-bottom:4px}.sval{font-size:1rem;font-weight:900;color:var(--p)}
-.tabs{display:flex;gap:6px;margin-bottom:14px;background:var(--card);border-radius:12px;padding:5px;box-shadow:0 1px 4px rgba(0,0,0,.07)}
-.tab{flex:1;text-align:center;padding:10px 6px;border-radius:9px;cursor:pointer;font-size:.85rem;font-weight:600;color:var(--sub);border:none;background:none;font-family:inherit;transition:.2s}.tab.on{background:var(--p);color:#fff;box-shadow:0 2px 8px rgba(26,75,140,.25)}
-.tc{display:none}.tc.on{display:block}
-.bc{background:var(--card);border-radius:14px;border:1.5px solid var(--bd);margin-bottom:12px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.05)}
-.bc-head{padding:14px 16px 0}.bc-title{font-weight:700;font-size:.97rem;color:var(--p);line-height:1.3}
-.bc-body{padding:8px 16px 12px}.bnums{display:flex;justify-content:space-between;font-size:.8rem;color:var(--sub);margin-bottom:8px}.bnums strong{color:var(--text)}
-.bar-bg{background:var(--bg);border-radius:99px;height:10px;overflow:hidden;margin-bottom:5px}.bar-fill{height:100%;border-radius:99px;transition:width .4s}.bar-ok{background:linear-gradient(90deg,#16a34a,#4ade80)}.bar-warn{background:linear-gradient(90deg,#ca8a04,#fbbf24)}.bar-danger{background:linear-gradient(90deg,#dc2626,#f87171)}
-.bc-pct{font-size:.78rem;color:var(--sub);margin-bottom:5px}.bc-remain{font-size:.88rem;font-weight:700;text-align:right}
-.bc-actions{display:flex;gap:6px;padding:0 16px 14px}.bc-actions .btn{flex:1;padding:10px;font-size:.83rem}
-.exp-toggle{width:100%;background:#f8fafc;border:none;border-top:1px solid var(--bd);padding:11px 16px;font-family:inherit;font-size:.82rem;color:var(--sub);cursor:pointer;text-align:left;display:flex;justify-content:space-between}
+.major-section{margin-bottom:24px}
+.major-header{background:linear-gradient(135deg,var(--p),var(--pl));color:#fff;border-radius:14px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.major-name{font-size:1rem;font-weight:700}.major-mgr{font-size:.75rem;opacity:.8;margin-top:2px}
+.major-actions{display:flex;gap:6px;flex-shrink:0;margin-left:10px}
+.btn-msm{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.35);padding:6px 11px;border-radius:7px;font-size:.75rem;font-family:inherit;cursor:pointer;white-space:nowrap}
+.major-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:10px}
+.msitem{background:var(--card);border-radius:8px;padding:9px 10px;border:1.5px solid var(--bd);text-align:center}
+.mslabel{font-size:.68rem;color:var(--sub);margin-bottom:3px}.msval{font-size:.85rem;font-weight:900;color:var(--p)}
+.tabs{display:flex;gap:6px;margin-bottom:12px;background:var(--card);border-radius:12px;padding:5px;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.tab{flex:1;text-align:center;padding:9px 4px;border-radius:9px;cursor:pointer;font-size:.82rem;font-weight:600;color:var(--sub);border:none;background:none;font-family:inherit;transition:.2s}
+.tab.on{background:var(--p);color:#fff}
+.bc{background:var(--card);border-radius:12px;border:1.5px solid var(--bd);margin-bottom:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.bc-head{padding:12px 14px 0}.bc-title{font-weight:700;font-size:.92rem;color:var(--p);line-height:1.3}
+.bc-body{padding:8px 14px 10px}
+.bnums{display:flex;justify-content:space-between;font-size:.78rem;color:var(--sub);margin-bottom:7px}.bnums strong{color:var(--text)}
+.bar-bg{background:var(--bg);border-radius:99px;height:9px;overflow:hidden;margin-bottom:4px}.bar-fill{height:100%;border-radius:99px;transition:width .4s}
+.bar-ok{background:linear-gradient(90deg,#16a34a,#4ade80)}.bar-warn{background:linear-gradient(90deg,#ca8a04,#fbbf24)}.bar-danger{background:linear-gradient(90deg,#dc2626,#f87171)}
+.bc-pct{font-size:.75rem;color:var(--sub);margin-bottom:4px}.bc-remain{font-size:.85rem;font-weight:700;text-align:right}
+.bc-actions{display:flex;gap:5px;padding:0 14px 12px}.bc-actions .btn{flex:1;padding:9px;font-size:.8rem}
+.exp-toggle{width:100%;background:#f8fafc;border:none;border-top:1px solid var(--bd);padding:10px 14px;font-family:inherit;font-size:.8rem;color:var(--sub);cursor:pointer;text-align:left;display:flex;justify-content:space-between}
 .exp-list{border-top:1px solid var(--bd);display:none}.exp-list.open{display:block}
-.exp-item{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid #f1f5f9}.exp-item:last-child{border-bottom:none}
-.exp-name{font-size:.85rem;font-weight:500}.exp-date{font-size:.75rem;color:var(--sub);margin-top:1px}.exp-r{display:flex;align-items:center;gap:10px}.exp-amt{font-size:.88rem;font-weight:700;color:var(--red)}.btn-del{background:none;border:none;color:#cbd5e1;font-size:1.1rem;cursor:pointer;padding:4px}
-.dc{background:var(--card);border-radius:14px;border:1.5px solid var(--bd);margin-bottom:12px;overflow:hidden}
-.dc-name{background:var(--p);color:#fff;padding:11px 16px;font-size:.9rem;font-weight:700}
-.dc-badges{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px}
-.dc-bw{display:flex;flex-direction:column;align-items:center;gap:5px}.dc-bl{font-size:.72rem;color:var(--sub);font-weight:600}
-.badge{display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border-radius:99px;font-size:.8rem;font-weight:700;cursor:pointer;border:2px solid transparent;width:100%;text-align:center;transition:.15s}.badge:active{transform:scale(.93)}
-.b-done{background:#dcfce7;color:var(--green);border-color:#86efac}.b-todo{background:#fee2e2;color:var(--red);border-color:#fca5a5}.b-none{background:#f1f5f9;color:#94a3b8;border-color:#cbd5e1}
-.dc-memo{padding:0 14px 12px}.dc-memo input{font-size:.85rem;padding:9px 12px}
-.tags{display:flex;gap:5px;flex-wrap:wrap;margin:4px 0}.tag{background:#e0eaff;color:var(--pl);font-size:.72rem;padding:2px 8px;border-radius:99px;font-weight:600}
-.bnav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--bd);padding:8px 14px 20px;display:flex;gap:8px;z-index:99;box-shadow:0 -2px 12px rgba(0,0,0,.08)}.bnav .btn{flex:1;padding:12px;font-size:.85rem}
+.exp-item{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-bottom:1px solid #f1f5f9}.exp-item:last-child{border-bottom:none}
+.exp-name{font-size:.83rem;font-weight:500}.exp-date{font-size:.73rem;color:var(--sub);margin-top:1px}
+.exp-r{display:flex;align-items:center;gap:8px}.exp-amt{font-size:.85rem;font-weight:700;color:var(--red)}.btn-del{background:none;border:none;color:#cbd5e1;font-size:1rem;cursor:pointer;padding:4px}
+
+/* 체크리스트 카드 */
+.cl-card{background:var(--card);border-radius:12px;border:1.5px solid var(--bd);margin-bottom:10px;overflow:hidden}
+.cl-header{background:#334155;color:#fff;padding:10px 14px;font-size:.88rem;font-weight:700;display:flex;align-items:center;justify-content:space-between}
+.cl-header-title{flex:1}
+.cl-body{padding:10px 14px}
+.cl-item{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #f1f5f9}
+.cl-item:last-child{border-bottom:none}
+.cl-check{width:26px;height:26px;border-radius:6px;border:2px solid var(--bd);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:.15s;background:#f8fafc}
+.cl-check.done{background:var(--green);border-color:var(--green);color:#fff}
+.cl-check.na{background:#e2e8f0;border-color:#cbd5e1;color:#94a3b8}
+.cl-item-name{flex:1;font-size:.88rem;font-weight:500}
+.cl-item-name.done{text-decoration:line-through;color:var(--sub)}
+.cl-item-actions{display:flex;gap:4px}
+.cl-status-btn{background:none;border:1px solid var(--bd);border-radius:6px;padding:3px 8px;font-size:.72rem;font-family:inherit;cursor:pointer;color:var(--sub);white-space:nowrap}
+.cl-status-btn.active-done{background:#dcfce7;color:var(--green);border-color:#86efac}
+.cl-status-btn.active-na{background:#f1f5f9;color:#94a3b8;border-color:#cbd5e1}
+
+/* 체크리스트 추가 인풋 */
+.cl-add-row{display:flex;gap:7px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--bd)}
+.cl-add-row input{flex:1;padding:9px 12px;font-size:.85rem;border-radius:8px}
+.cl-add-btn{background:var(--p);color:#fff;border:none;border-radius:8px;padding:9px 14px;font-family:inherit;font-size:.82rem;font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0}
+
+/* 대사업 체크리스트 */
+.major-cl-wrap{background:var(--card);border-radius:12px;border:1.5px solid var(--bd);margin-bottom:10px;overflow:hidden}
+.major-cl-header{background:#0f4c75;color:#fff;padding:10px 14px;font-size:.88rem;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+
+.tags{display:flex;gap:4px;flex-wrap:wrap;margin:4px 0}.tag{background:#e0eaff;color:var(--pl);font-size:.7rem;padding:2px 7px;border-radius:99px;font-weight:600}
+.bnav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--bd);padding:8px 14px 20px;display:flex;gap:8px;z-index:99;box-shadow:0 -2px 12px rgba(0,0,0,.08)}.bnav .btn{flex:1;padding:12px;font-size:.82rem}
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:flex-end}.overlay.show{display:flex}
 .sheet{background:#fff;border-radius:20px 20px 0 0;padding:20px 18px 32px;width:100%;max-height:90vh;overflow-y:auto;animation:up .25s ease}
 @keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
 .sheet-handle{width:40px;height:4px;background:#d1d5db;border-radius:99px;margin:0 auto 18px}.sheet h3{font-size:1rem;font-weight:700;color:var(--p);margin-bottom:16px}
-.empty{text-align:center;padding:40px 20px;color:var(--sub)}.empty .icon{font-size:2.8rem;margin-bottom:10px}
+.empty{text-align:center;padding:28px 20px;color:var(--sub)}.empty .icon{font-size:2.2rem;margin-bottom:8px}
 .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:#1a202c;color:#fff;padding:10px 20px;border-radius:99px;font-size:.85rem;font-weight:600;z-index:500;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}.toast.show{opacity:1}
-.sync-badge{display:inline-block;font-size:.7rem;padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:middle}
-.sync-ok{background:#dcfce7;color:var(--green)}.sync-fail{background:#fee2e2;color:var(--red)}.sync-ing{background:#fef9c3;color:#854d0e}
+.total-summary{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+.tsitem{background:var(--card);border-radius:10px;padding:11px 13px;border:1.5px solid var(--bd)}.tslabel{font-size:.72rem;color:var(--sub);margin-bottom:3px}.tsval{font-size:.95rem;font-weight:900;color:var(--p)}
+.add-major-btn{border:2px dashed var(--bd);background:transparent;color:var(--sub);border-radius:14px;padding:16px;width:100%;font-family:inherit;font-size:.9rem;font-weight:600;cursor:pointer;margin-bottom:16px;transition:.2s}
+.add-major-btn:hover{border-color:var(--p);color:var(--p)}
+
 @media print{
   .no-print,.bnav,.overlay{display:none!important}
-  header{position:static}main{padding:10px}.tc{display:block!important}.tabs{display:none}body{background:#fff}
-  .bc-actions,.exp-toggle,.btn-del{display:none!important}.exp-list{display:block!important}.dc-memo input{border:none;padding:0;background:transparent}
+  header{position:static}main{padding:10px}body{background:#fff}
+  .bc-actions,.exp-toggle,.btn-del,.major-actions,.add-major-btn,.cl-add-row,.cl-item-actions,.cl-add-btn{display:none!important}
+  .exp-list{display:block!important}
+  [id^="tc-"]{display:block!important}
+  .tabs{display:none!important}
 }
 </style>
 </head>
 <body>
-
 <header>
   <div>
     <div class="logo">📋 사업 현황 관리</div>
@@ -84,11 +111,25 @@ main{max-width:680px;margin:0 auto;padding:16px 14px 90px}
 <main id="app"></main>
 <div class="toast" id="toast"></div>
 
+<!-- 대사업 추가 시트 -->
+<div class="overlay" id="addMajorOverlay">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <h3>대사업 추가</h3>
+    <div class="field"><label>대사업명</label><input id="majorName" placeholder="예: 2024년 청소년 지원 사업"/></div>
+    <div class="field"><label>담당자명 (선택)</label><input id="majorMgr" placeholder="예: 홍길동"/></div>
+    <div class="row" style="margin-top:18px">
+      <button class="btn gray" onclick="closeSheet('addMajorOverlay')">취소</button>
+      <button class="btn green" onclick="addMajor()">추가</button>
+    </div>
+  </div>
+</div>
+
 <!-- 단위사업 추가 시트 -->
 <div class="overlay" id="addSubOverlay">
   <div class="sheet" onclick="event.stopPropagation()">
     <div class="sheet-handle"></div>
-    <h3>단위사업 추가</h3>
+    <h3 id="addSubTitle">단위사업 추가</h3>
     <div class="field"><label>단위사업명</label><input id="subName" placeholder="예: 방과후 프로그램 운영"/></div>
     <div class="field"><label>배정 예산 (원)</label><input id="subBudget" type="number" inputmode="numeric" placeholder="예: 3000000"/></div>
     <div class="field"><label>태그 (선택, 쉼표 구분)</label><input id="subTags" placeholder="예: 교육, 문화"/></div>
@@ -114,21 +155,7 @@ main{max-width:680px;margin:0 auto;padding:16px 14px 90px}
   </div>
 </div>
 
-<!-- 사업 등록 시트 -->
-<div class="overlay" id="setupOverlay">
-  <div class="sheet" onclick="event.stopPropagation()">
-    <div class="sheet-handle"></div>
-    <h3>사업 등록</h3>
-    <div class="field"><label>전체 사업명</label><input id="projName" placeholder="예: 2024년 청소년 지원 사업"/></div>
-    <div class="field"><label>담당자명 (선택)</label><input id="projMgr" placeholder="예: 홍길동"/></div>
-    <div class="row" style="margin-top:18px">
-      <button class="btn gray" onclick="closeSheet('setupOverlay')">취소</button>
-      <button class="btn green" onclick="startProject()">등록</button>
-    </div>
-  </div>
-</div>
-
-<!-- Firebase (비동기 로드, 실패해도 앱 동작) -->
+<!-- Firebase -->
 <script type="module">
   try {
     const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js");
@@ -144,223 +171,232 @@ main{max-width:680px;margin:0 auto;padding:16px 14px 90px}
     };
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
-    window._dbSave = async (code, data) => { await set(ref(db, "projects/" + code), data); };
-    window._dbLoad = async (code) => {
-      const snap = await get(ref(db, "projects/" + code));
-      return snap.exists() ? snap.val() : null;
-    };
+    window._dbSave = async (code, d) => { await set(ref(db, "projects/" + code), d); };
+    window._dbLoad = async (code) => { const s = await get(ref(db, "projects/" + code)); return s.exists() ? s.val() : null; };
     window._dbReady = true;
     document.dispatchEvent(new Event("dbReady"));
-  } catch(e) {
-    console.warn("Firebase 로드 실패, 로컬 모드로 동작:", e);
-    window._dbReady = false;
-    document.dispatchEvent(new Event("dbReady"));
-  }
+  } catch(e) { window._dbReady = false; document.dispatchEvent(new Event("dbReady")); }
 </script>
 
 <script>
 let userCode = localStorage.getItem('spm_code') || null;
-let project = null;
+// data 구조: { majors: [{name, manager, checklist:[{id,name,status}], subs:[{name,budget,tags,expenses,checklist:[{id,name,status}],memo}]}] }
+let data = { majors: [] };
+let currentMajorIdx = -1;
 let currentSubIdx = -1;
-let currentTab = 'budget';
+let currentTab = {};
 let openExp = {};
 let saveTimer = null;
-let syncStatus = 'none'; // none, ok, fail, ing
+let currentAddSubMajorIdx = -1;
 
-const DOC_TYPES = ['계획서','중간보고','결과보고','기안'];
-const S_CYCLE = ['todo','done','none'];
-const S_LABEL = {done:'✔ 완료', todo:'✘ 미작성', none:'- 해당없음'};
-const S_CLASS = {done:'b-done', todo:'b-todo', none:'b-none'};
+// status: 'todo' | 'done' | 'na'
+const S_LABEL = { done:'✔ 완료', todo:'미완료', na:'해당없음' };
+const S_NEXT = { todo:'done', done:'na', na:'todo' };
+const S_ICON = { done:'✔', todo:'', na:'-' };
 
 function fmt(n){ return Number(n||0).toLocaleString('ko-KR')+'원'; }
-function spent(sub){ return (sub.expenses||[]).reduce((s,e)=>s+e.amount,0); }
-function remain(sub){ return sub.budget - spent(sub); }
-function pct(sub){ return sub.budget>0?Math.min(100,Math.round(spent(sub)/sub.budget*100)):0; }
+function spentSub(sub){ return toArr(sub.expenses).reduce((s,e)=>s+e.amount,0); }
+function remainSub(sub){ return sub.budget - spentSub(sub); }
+function pctSub(sub){ return sub.budget>0?Math.min(100,Math.round(spentSub(sub)/sub.budget*100)):0; }
 function today(){ return new Date().toISOString().slice(0,10); }
-function defDocs(){ return {계획서:'todo',중간보고:'none',결과보고:'todo',기안:'todo'}; }
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,5); }
 
-// Firebase 데이터 정규화 (배열/객체 변환 포함)
-function toArray(val){
+function toArr(val){
   if(!val) return [];
   if(Array.isArray(val)) return val;
-  // Firebase가 배열을 객체로 변환한 경우 복원
   return Object.keys(val).sort((a,b)=>Number(a)-Number(b)).map(k=>val[k]);
 }
-function normalizeProject(data){
-  if(!data) return null;
-  if(!data.name) return null;
-  data.subs = toArray(data.subs).map(sub=>({
-    name: sub.name || '',
-    budget: sub.budget || 0,
-    tags: toArray(sub.tags),
-    expenses: toArray(sub.expenses).map(e=>({ name:e.name||'', amount:e.amount||0, date:e.date||'' })),
-    docs: Object.assign({계획서:'todo',중간보고:'none',결과보고:'todo',기안:'todo'}, sub.docs||{}),
-    memo: sub.memo || ''
-  }));
-  return data;
+
+function normCL(cl){
+  return toArr(cl).map(item=>({ id: item.id||uid(), name: item.name||'', status: item.status||'todo' }));
 }
 
-function toast(msg, dur=2000){
-  const el = document.getElementById('toast');
-  el.textContent = msg; el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'), dur);
+function normalize(raw){
+  if(!raw) return { majors:[] };
+  return {
+    majors: toArr(raw.majors).map(m=>({
+      name: m.name||'',
+      manager: m.manager||'',
+      checklist: normCL(m.checklist),
+      subs: toArr(m.subs).map(sub=>({
+        name: sub.name||'',
+        budget: sub.budget||0,
+        tags: toArr(sub.tags),
+        expenses: toArr(sub.expenses).map(e=>({name:e.name||'',amount:e.amount||0,date:e.date||''})),
+        checklist: normCL(sub.checklist),
+        memo: sub.memo||''
+      }))
+    }))
+  };
 }
 
+function toast(msg,dur=2000){ const el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show'); setTimeout(()=>el.classList.remove('show'),dur); }
 function setSub(msg){ const el=document.getElementById('headerSub'); if(el) el.textContent=msg; }
-
-// ── 로컬 저장/로드 ──
-function localSave(data){ try{ localStorage.setItem('spm_'+userCode, JSON.stringify(data)); }catch(e){} }
+function localSave(d){ try{ localStorage.setItem('spm_'+userCode,JSON.stringify(d)); }catch(e){} }
 function localLoad(){ try{ const d=localStorage.getItem('spm_'+userCode); return d?JSON.parse(d):null; }catch(e){ return null; } }
+function withTimeout(p,ms){ return Promise.race([p,new Promise((_,r)=>setTimeout(()=>r(new Error('t')),ms))]); }
 
-// ── Firebase 저장/로드 (타임아웃 3초) ──
-function withTimeout(promise, ms){
-  return Promise.race([promise, new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),ms))]);
-}
-
-async function dbSave(data){
-  localSave(data);
+async function dbSave(d){
+  localSave(d);
   if(!window._dbReady) return;
   setSub('☁️ 저장 중...');
-  try{
-    await withTimeout(window._dbSave(userCode, data), 5000);
-    setSub('✓ 클라우드 저장됨 | 코드: '+userCode);
-    setTimeout(()=>setSub('코드: '+userCode), 2500);
-  } catch(e){
-    setSub('⚠️ 로컬 저장됨 | 코드: '+userCode);
-    setTimeout(()=>setSub('코드: '+userCode), 2500);
-  }
+  try{ await withTimeout(window._dbSave(userCode,d),5000); setSub('✓ 저장됨 | 코드: '+userCode); setTimeout(()=>setSub('코드: '+userCode),2000); }
+  catch(e){ setSub('코드: '+userCode); }
 }
 
 async function dbLoad(){
-  const local = normalizeProject(localLoad());
+  const local=normalize(localLoad());
   if(!window._dbReady) return local;
-  try{
-    const data = await withTimeout(window._dbLoad(userCode), 5000);
-    if(data){ const norm=normalizeProject(data); localSave(norm); return norm; }
-    return local;
-  } catch(e){
-    return local;
-  }
+  try{ const raw=await withTimeout(window._dbLoad(userCode),5000); if(raw){ const n=normalize(raw); localSave(n); return n; } return local; }
+  catch(e){ return local; }
 }
 
-function save(){
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(()=>dbSave(project), 800);
-}
-
-function logout(){
-  if(!confirm('로그아웃 할까요?')) return;
-  userCode=null; localStorage.removeItem('spm_code'); project=null; render();
-}
+function save(){ clearTimeout(saveTimer); saveTimer=setTimeout(()=>dbSave(data),800); }
+function logout(){ if(!confirm('로그아웃 할까요?')) return; userCode=null; localStorage.removeItem('spm_code'); data={majors:[]}; render(); }
 
 async function login(code){
   if(!code.trim()){ alert('코드를 입력해주세요'); return; }
-  userCode = code.trim();
-  localStorage.setItem('spm_code', userCode);
+  userCode=code.trim(); localStorage.setItem('spm_code',userCode);
   document.getElementById('logoutBtn').style.display='';
   setSub('코드: '+userCode);
-
-  // 로컬 데이터 먼저 보여주고
-  const local = localLoad();
-  project = local;
-  render();
-
-  // 백그라운드에서 Firebase 동기화
+  data=normalize(localLoad()); render();
   if(window._dbReady){
-    try{
-      setSub('☁️ 동기화 중...');
-      const fresh = await withTimeout(window._dbLoad(userCode), 5000);
-      if(fresh){ project=fresh; localSave(fresh); render(); }
-      setSub('코드: '+userCode);
-    } catch(e){ setSub('코드: '+userCode); }
+    try{ setSub('☁️ 동기화 중...'); const raw=await withTimeout(window._dbLoad(userCode),5000); if(raw){ data=normalize(raw); localSave(data); render(); } setSub('코드: '+userCode); }
+    catch(e){ setSub('코드: '+userCode); }
   }
 }
 
-function startProject(){
-  const name=document.getElementById('projName').value.trim();
-  const mgr=document.getElementById('projMgr').value.trim();
-  if(!name){ alert('사업명을 입력해주세요'); return; }
-  project={name,manager:mgr,subs:[]};
-  closeSheet('setupOverlay'); save(); render();
+// ── 대사업 ──
+function addMajor(){
+  const name=document.getElementById('majorName').value.trim();
+  const mgr=document.getElementById('majorMgr').value.trim();
+  if(!name){ alert('대사업명을 입력해주세요'); return; }
+  data.majors.push({name,manager:mgr,checklist:[],subs:[]});
+  closeSheet('addMajorOverlay'); save(); render(); toast('대사업이 추가됐어요 ✅');
 }
+function deleteMajor(mi){ if(!confirm(`"${data.majors[mi].name}" 삭제할까요?`)) return; data.majors.splice(mi,1); save(); render(); }
 
-function resetProject(){
-  if(!confirm('사업을 초기화할까요? 모든 데이터가 삭제됩니다.')) return;
-  project=null; dbSave(null); render();
+// ── 단위사업 ──
+function openAddSubSheet(mi){
+  currentAddSubMajorIdx=mi;
+  document.getElementById('addSubTitle').textContent='단위사업 추가 — '+data.majors[mi].name;
+  document.getElementById('subName').value=''; document.getElementById('subBudget').value=''; document.getElementById('subTags').value='';
+  openSheet('addSubOverlay');
 }
-
 function addSub(){
   const name=document.getElementById('subName').value.trim();
   const budget=parseInt(document.getElementById('subBudget').value)||0;
   const tags=document.getElementById('subTags').value.split(',').map(t=>t.trim()).filter(Boolean);
-  if(!name){ alert('사업명을 입력해주세요'); return; }
-  project.subs.push({name,budget,tags,expenses:[],docs:defDocs(),memo:''});
-  closeSheet('addSubOverlay'); save(); render(); switchTab('budget');
-  toast('단위사업이 추가됐어요 ✅');
+  if(!name){ alert('단위사업명을 입력해주세요'); return; }
+  data.majors[currentAddSubMajorIdx].subs.push({name,budget,tags,expenses:[],checklist:[],memo:''});
+  closeSheet('addSubOverlay'); save(); render(); toast('단위사업이 추가됐어요 ✅');
 }
+function deleteSub(mi,si){ if(!confirm(`"${data.majors[mi].subs[si].name}" 삭제할까요?`)) return; data.majors[mi].subs.splice(si,1); save(); render(); }
 
-function deleteSub(i){
-  if(!confirm(`"${project.subs[i].name}" 삭제할까요?`)) return;
-  project.subs.splice(i,1); save(); render();
-}
-
-function openExpSheet(i){
-  currentSubIdx=i;
-  document.getElementById('expTitle').textContent='지출 추가 — '+project.subs[i].name;
-  document.getElementById('expName').value='';
-  document.getElementById('expAmt').value='';
-  document.getElementById('expDate').value=today();
+// ── 지출 ──
+function openExpSheet(mi,si){
+  currentMajorIdx=mi; currentSubIdx=si;
+  document.getElementById('expTitle').textContent='지출 추가 — '+data.majors[mi].subs[si].name;
+  document.getElementById('expName').value=''; document.getElementById('expAmt').value=''; document.getElementById('expDate').value=today();
   openSheet('addExpOverlay');
 }
-
 function addExp(){
   const name=document.getElementById('expName').value.trim();
   const amount=parseInt(document.getElementById('expAmt').value)||0;
   const date=document.getElementById('expDate').value;
   if(!name||!amount){ alert('항목명과 금액을 입력해주세요'); return; }
-  project.subs[currentSubIdx].expenses.push({name,amount,date});
-  closeSheet('addExpOverlay'); save(); render();
-  toast('지출이 추가됐어요 💸');
+  data.majors[currentMajorIdx].subs[currentSubIdx].expenses.push({name,amount,date});
+  closeSheet('addExpOverlay'); save(); render(); toast('지출이 추가됐어요 💸');
+}
+function deleteExp(mi,si,ei){ data.majors[mi].subs[si].expenses.splice(ei,1); save(); render(); }
+function toggleExpList(mi,si){
+  const key=`${mi}-${si}`; openExp[key]=!openExp[key];
+  const el=document.getElementById('expList-'+key); const ar=document.getElementById('expArr-'+key);
+  if(el) el.classList.toggle('open',openExp[key]); if(ar) ar.textContent=openExp[key]?'▲':'▼';
 }
 
-function deleteExp(si,ei){ project.subs[si].expenses.splice(ei,1); save(); render(); }
-
-function toggleExpList(i){
-  openExp[i]=!openExp[i];
-  const el=document.getElementById('expList-'+i);
-  const ar=document.getElementById('expArr-'+i);
-  if(el) el.classList.toggle('open',openExp[i]);
-  if(ar) ar.textContent=openExp[i]?'▲':'▼';
+// ── 체크리스트 ──
+// type: 'major'|'sub', mi, si(sub만)
+function addCheckItem(type, mi, si){
+  const inputId = type==='major' ? `cl-input-m${mi}` : `cl-input-s${mi}-${si}`;
+  const el = document.getElementById(inputId);
+  if(!el) return;
+  const name = el.value.trim();
+  if(!name){ alert('항목명을 입력해주세요'); return; }
+  const item = { id:uid(), name, status:'todo' };
+  if(type==='major'){ data.majors[mi].checklist.push(item); }
+  else { data.majors[mi].subs[si].checklist.push(item); }
+  el.value='';
+  save(); render();
 }
 
-function cycleDoc(si,dt){
-  const cur=project.subs[si].docs[dt]||'todo';
-  const idx=S_CYCLE.indexOf(cur);
-  project.subs[si].docs[dt]=S_CYCLE[(idx+1)%S_CYCLE.length];
+function cycleCheckItem(type, mi, si, itemId){
+  const cl = type==='major' ? data.majors[mi].checklist : data.majors[mi].subs[si].checklist;
+  const item = cl.find(c=>c.id===itemId);
+  if(!item) return;
+  item.status = S_NEXT[item.status]||'todo';
   save();
-  const el=document.getElementById(`badge-${si}-${dt}`);
-  const st=project.subs[si].docs[dt];
-  if(el){ el.className=`badge ${S_CLASS[st]}`; el.textContent=S_LABEL[st]; }
-  renderSummary();
+  // 해당 아이템만 업데이트
+  const checkEl = document.getElementById(`chk-${itemId}`);
+  const nameEl = document.getElementById(`chkname-${itemId}`);
+  const statusEl = document.getElementById(`chkstatus-${itemId}`);
+  if(checkEl){
+    checkEl.className='cl-check'+(item.status==='done'?' done':item.status==='na'?' na':'');
+    checkEl.textContent=S_ICON[item.status];
+  }
+  if(nameEl){ nameEl.className='cl-item-name'+(item.status==='done'?' done':''); }
+  if(statusEl){ statusEl.textContent=S_LABEL[item.status]; statusEl.className='cl-status-btn'+(item.status==='done'?' active-done':item.status==='na'?' active-na':''); }
 }
 
-function updateMemo(si,val){ project.subs[si].memo=val; save(); }
-function switchTab(tab){
-  currentTab=tab;
-  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('on',['budget','docs'][i]===tab));
-  document.querySelectorAll('.tc').forEach(tc=>tc.classList.remove('on'));
-  const el=document.getElementById('tc-'+tab); if(el) el.classList.add('on');
+function deleteCheckItem(type, mi, si, itemId){
+  if(type==='major'){ data.majors[mi].checklist=data.majors[mi].checklist.filter(c=>c.id!==itemId); }
+  else { data.majors[mi].subs[si].checklist=data.majors[mi].subs[si].checklist.filter(c=>c.id!==itemId); }
+  save(); render();
+}
+
+function updateMemo(mi,si,val){ data.majors[mi].subs[si].memo=val; save(); }
+function switchTab(mi,tab){
+  currentTab[mi]=tab;
+  ['budget','docs'].forEach(t=>{
+    const el=document.getElementById(`tc-${mi}-${t}`); const btn=document.getElementById(`tab-${mi}-${t}`);
+    if(el) el.style.display=t===tab?'block':'none';
+    if(btn) btn.classList.toggle('on',t===tab);
+  });
 }
 function openSheet(id){ document.getElementById(id).classList.add('show'); }
 function closeSheet(id){ document.getElementById(id).classList.remove('show'); }
-
-['addSubOverlay','addExpOverlay','setupOverlay'].forEach(id=>{
+['addMajorOverlay','addSubOverlay','addExpOverlay'].forEach(id=>{
   document.getElementById(id).addEventListener('click',function(e){ if(e.target===this) closeSheet(id); });
 });
 
+// ── 체크리스트 렌더 함수 ──
+function renderChecklist(type, mi, si, cl, inputId){
+  const itemsHTML = cl.length===0
+    ? '<div style="text-align:center;padding:10px;color:var(--sub);font-size:.82rem">항목을 추가해보세요</div>'
+    : cl.map(item=>`
+        <div class="cl-item">
+          <div id="chk-${item.id}" class="cl-check${item.status==='done'?' done':item.status==='na'?' na':''}"
+            onclick="cycleCheckItem('${type}',${mi},${si==-1?-1:si},'${item.id}')">${S_ICON[item.status]}</div>
+          <div id="chkname-${item.id}" class="cl-item-name${item.status==='done'?' done':''}">${item.name}</div>
+          <div class="cl-item-actions no-print">
+            <span id="chkstatus-${item.id}" class="cl-status-btn${item.status==='done'?' active-done':item.status==='na'?' active-na':''}"
+              onclick="cycleCheckItem('${type}',${mi},${si==-1?-1:si},'${item.id}')">${S_LABEL[item.status]}</span>
+            <button class="btn-del" onclick="deleteCheckItem('${type}',${mi},${si==-1?-1:si},'${item.id}')">✕</button>
+          </div>
+        </div>`).join('');
+  return `
+    <div class="cl-body">
+      ${itemsHTML}
+      <div class="cl-add-row no-print">
+        <input id="${inputId}" placeholder="항목명 입력..." onkeydown="if(event.key==='Enter') addCheckItem('${type}',${mi},${si==-1?-1:si})"/>
+        <button class="cl-add-btn" onclick="addCheckItem('${type}',${mi},${si==-1?-1:si})">＋ 추가</button>
+      </div>
+    </div>`;
+}
+
+// ── 메인 렌더 ──
 function render(){
   if(!userCode){ renderLogin(); return; }
-  if(!project||!project.name){ renderNoProject(); return; }
   renderMain();
 }
 
@@ -384,143 +420,144 @@ function renderLogin(){
     </div>`;
 }
 
-function renderNoProject(){
-  document.getElementById('logoutBtn').style.display='';
-  setSub('코드: '+userCode);
-  document.getElementById('app').innerHTML=`
-    <div class="empty" style="padding-top:60px">
-      <div class="icon">📂</div>
-      <div style="font-size:1rem;font-weight:700;margin-bottom:6px">사업을 시작해보세요</div>
-      <div style="font-size:.85rem;margin-bottom:24px;line-height:1.6">코드 <b>${userCode}</b> 로 사업을 등록하면<br>어디서든 이 코드로 접속해서 관리해요</div>
-      <button class="btn" style="width:auto;display:inline-block;padding:13px 32px"
-        onclick="document.getElementById('projName').value='';document.getElementById('projMgr').value='';openSheet('setupOverlay')">
-        🚀 사업 등록하기
-      </button>
-    </div>`;
-}
-
-function renderSummary(){
-  const subs=project.subs||[];
-  const tb=subs.reduce((s,sub)=>s+sub.budget,0);
-  const ts=subs.reduce((s,sub)=>s+spent(sub),0);
-  const dd=subs.reduce((s,sub)=>s+Object.values(sub.docs).filter(v=>v==='done').length,0);
-  const dt=subs.reduce((s,sub)=>s+Object.values(sub.docs).filter(v=>v==='todo').length,0);
-  const el=document.getElementById('summaryGrid'); if(!el) return;
-  el.innerHTML=[['📌 단위사업',subs.length+'개','var(--p)'],['💵 전체 예산',fmt(tb),'var(--p)'],
-    ['🔴 총 지출',fmt(ts),'var(--red)'],['🟢 잔여',fmt(tb-ts),'var(--green)'],
-    ['✅ 문서 완료',dd+'건','var(--green)'],['⏳ 미작성',dt+'건','var(--red)']
-  ].map(([l,v,c])=>`<div class="sitem"><div class="slabel">${l}</div><div class="sval" style="color:${c}">${v}</div></div>`).join('');
-}
-
 function renderMain(){
   document.getElementById('logoutBtn').style.display='';
   setSub('코드: '+userCode);
-  const subs=project.subs||[];
-  const tb=subs.reduce((s,sub)=>s+sub.budget,0);
-  const ts=subs.reduce((s,sub)=>s+spent(sub),0);
-  const dd=subs.reduce((s,sub)=>s+Object.values(sub.docs).filter(v=>v==='done').length,0);
-  const dt=subs.reduce((s,sub)=>s+Object.values(sub.docs).filter(v=>v==='todo').length,0);
+  const majors=data.majors||[];
+  const allSubs=majors.flatMap(m=>m.subs||[]);
+  const totalBudget=allSubs.reduce((s,sub)=>s+sub.budget,0);
+  const totalSpent=allSubs.reduce((s,sub)=>s+spentSub(sub),0);
+  // 전체 체크리스트 집계
+  const allCL=[...majors.flatMap(m=>m.checklist||[]),...allSubs.flatMap(s=>s.checklist||[])];
+  const clDone=allCL.filter(c=>c.status==='done').length;
+  const clTodo=allCL.filter(c=>c.status==='todo').length;
 
-  const budgetHTML=subs.length===0
-    ?'<div class="empty"><div class="icon">💡</div><p>하단 <b>＋ 사업추가</b> 버튼으로<br>단위사업을 추가하세요</p></div>'
-    :subs.map((sub,i)=>{
-      const sp=spent(sub),rm=remain(sub),pc=pct(sub);
-      const barCls=pc<60?'bar-ok':pc<85?'bar-warn':'bar-danger';
-      const remColor=rm>=0?'var(--green)':'var(--red)';
-      const tagHTML=sub.tags.length?`<div class="tags">${sub.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>`:'';
-      const expHTML=(sub.expenses||[]).map((e,ei)=>`
-        <div class="exp-item">
-          <div><div class="exp-name">${e.name}</div><div class="exp-date">${e.date}</div></div>
-          <div class="exp-r"><div class="exp-amt">-${fmt(e.amount)}</div>
-          <button class="btn-del no-print" onclick="deleteExp(${i},${ei})">✕</button></div>
-        </div>`).join('');
-      return `<div class="bc">
-        <div class="bc-head"><div class="bc-title">${sub.name}</div>${tagHTML}</div>
-        <div class="bc-body">
-          <div class="bnums"><span>예산 <strong>${fmt(sub.budget)}</strong></span><span>지출 <strong>${fmt(sp)}</strong></span></div>
-          <div class="bar-bg"><div class="bar-fill ${barCls}" style="width:${pc}%"></div></div>
-          <div class="bc-pct" style="color:${barCls==='bar-danger'?'var(--red)':'var(--sub)'}">사용률 ${pc}%</div>
-          <div class="bc-remain" style="color:${remColor}">잔여 ${fmt(Math.abs(rm))} ${rm<0?'⚠️ 초과':''}</div>
+  const totalHTML=majors.length>0?`
+    <div class="total-summary">
+      <div class="tsitem"><div class="tslabel">📌 대사업</div><div class="tsval">${majors.length}개</div></div>
+      <div class="tsitem"><div class="tslabel">📋 단위사업</div><div class="tsval">${allSubs.length}개</div></div>
+      <div class="tsitem"><div class="tslabel">💵 전체 예산</div><div class="tsval" style="font-size:.82rem">${fmt(totalBudget)}</div></div>
+      <div class="tsitem"><div class="tslabel">🔴 총 지출</div><div class="tsval" style="color:var(--red);font-size:.82rem">${fmt(totalSpent)}</div></div>
+      <div class="tsitem"><div class="tslabel">✅ 문서 완료</div><div class="tsval" style="color:var(--green)">${clDone}건</div></div>
+      <div class="tsitem"><div class="tslabel">⏳ 미완료</div><div class="tsval" style="color:var(--red)">${clTodo}건</div></div>
+    </div>`:'';
+
+  const majorsHTML=majors.map((major,mi)=>{
+    const subs=major.subs||[];
+    const mBudget=subs.reduce((s,sub)=>s+sub.budget,0);
+    const mSpent=subs.reduce((s,sub)=>s+spentSub(sub),0);
+    const mRemain=mBudget-mSpent;
+    const tab=currentTab[mi]||'budget';
+
+    // 예산 탭
+    const budgetHTML=subs.length===0
+      ?'<div class="empty"><div class="icon">💡</div><p>단위사업을 추가해보세요</p></div>'
+      :subs.map((sub,si)=>{
+        const sp=spentSub(sub),rm=remainSub(sub),pc=pctSub(sub);
+        const barCls=pc<60?'bar-ok':pc<85?'bar-warn':'bar-danger';
+        const key=`${mi}-${si}`;
+        const tagHTML=sub.tags.length?`<div class="tags">${sub.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>`:'';
+        const expHTML=sub.expenses.map((e,ei)=>`
+          <div class="exp-item">
+            <div><div class="exp-name">${e.name}</div><div class="exp-date">${e.date}</div></div>
+            <div class="exp-r"><div class="exp-amt">-${fmt(e.amount)}</div>
+            <button class="btn-del no-print" onclick="deleteExp(${mi},${si},${ei})">✕</button></div>
+          </div>`).join('');
+        return `<div class="bc">
+          <div class="bc-head"><div class="bc-title">${sub.name}</div>${tagHTML}</div>
+          <div class="bc-body">
+            <div class="bnums"><span>예산 <strong>${fmt(sub.budget)}</strong></span><span>지출 <strong>${fmt(sp)}</strong></span></div>
+            <div class="bar-bg"><div class="bar-fill ${barCls}" style="width:${pc}%"></div></div>
+            <div class="bc-pct" style="color:${barCls==='bar-danger'?'var(--red)':'var(--sub)'}">사용률 ${pc}%</div>
+            <div class="bc-remain" style="color:${rm>=0?'var(--green)':'var(--red)'}">잔여 ${fmt(Math.abs(rm))} ${rm<0?'⚠️ 초과':''}</div>
+          </div>
+          <div class="bc-actions no-print">
+            <button class="btn green sm" onclick="openExpSheet(${mi},${si})">＋ 지출</button>
+            <button class="btn red sm" onclick="deleteSub(${mi},${si})">삭제</button>
+          </div>
+          ${sub.expenses.length>0?`
+            <button class="exp-toggle no-print" onclick="toggleExpList(${mi},${si})">
+              <span>지출 내역 ${sub.expenses.length}건</span><span id="expArr-${key}">▼</span>
+            </button>
+            <div class="exp-list ${openExp[key]?'open':''}" id="expList-${key}">${expHTML}</div>
+          `:'<div style="text-align:center;padding:6px 0 10px;color:var(--sub);font-size:.78rem">지출 내역 없음</div>'}
+        </div>`;
+      }).join('');
+
+    // 문서/체크리스트 탭
+    const docsHTML=`
+      <!-- 대사업 체크리스트 -->
+      <div class="major-cl-wrap">
+        <div class="major-cl-header">
+          <span>📌 대사업 체크리스트 — ${major.name}</span>
+          <span style="font-size:.72rem;opacity:.8">${(major.checklist||[]).filter(c=>c.status==='done').length}/${(major.checklist||[]).length} 완료</span>
         </div>
-        <div class="bc-actions no-print">
-          <button class="btn green sm" onclick="openExpSheet(${i})">＋ 지출</button>
-          <button class="btn red sm" onclick="deleteSub(${i})">삭제</button>
+        ${renderChecklist('major',mi,-1,major.checklist||[],`cl-input-m${mi}`)}
+      </div>
+      <!-- 단위사업별 체크리스트 -->
+      ${subs.length===0
+        ?'<div class="empty"><div class="icon">📄</div><p>단위사업을 먼저 추가해주세요</p></div>'
+        :subs.map((sub,si)=>`
+          <div class="cl-card">
+            <div class="cl-header">
+              <span class="cl-header-title">${sub.name}</span>
+              <span style="font-size:.72rem;opacity:.8">${(sub.checklist||[]).filter(c=>c.status==='done').length}/${(sub.checklist||[]).length} 완료</span>
+            </div>
+            ${renderChecklist('sub',mi,si,sub.checklist||[],`cl-input-s${mi}-${si}`)}
+            <div style="padding:0 14px 10px">
+              <input style="font-size:.83rem;padding:8px 11px" value="${(sub.memo||'').replace(/"/g,'&quot;')}" placeholder="메모..." oninput="updateMemo(${mi},${si},this.value)"/>
+            </div>
+          </div>`).join('')}`;
+
+    return `
+      <div class="major-section">
+        <div class="major-header">
+          <div>
+            <div class="major-name">${major.name}</div>
+            ${major.manager?`<div class="major-mgr">담당: ${major.manager}</div>`:''}
+          </div>
+          <div class="major-actions no-print">
+            <button class="btn-msm" onclick="openAddSubSheet(${mi})">＋ 단위사업</button>
+            <button class="btn-msm" onclick="deleteMajor(${mi})">삭제</button>
+          </div>
         </div>
-        ${sub.expenses.length>0?`
-          <button class="exp-toggle no-print" onclick="toggleExpList(${i})">
-            <span>지출 내역 ${sub.expenses.length}건</span><span id="expArr-${i}">▼</span>
-          </button>
-          <div class="exp-list ${openExp[i]?'open':''}" id="expList-${i}">${expHTML}</div>
-        `:'<div style="text-align:center;padding:8px 0 12px;color:var(--sub);font-size:.8rem">지출 내역 없음</div>'}
+        <div class="major-summary">
+          <div class="msitem"><div class="mslabel">💵 예산</div><div class="msval" style="font-size:.8rem">${fmt(mBudget)}</div></div>
+          <div class="msitem"><div class="mslabel">🔴 지출</div><div class="msval" style="color:var(--red);font-size:.8rem">${fmt(mSpent)}</div></div>
+          <div class="msitem"><div class="mslabel">🟢 잔여</div><div class="msval" style="color:${mRemain>=0?'var(--green)':'var(--red)'};font-size:.8rem">${fmt(mRemain)}</div></div>
+        </div>
+        <div class="tabs no-print">
+          <button id="tab-${mi}-budget" class="tab ${tab==='budget'?'on':''}" onclick="switchTab(${mi},'budget')">💰 예산 현황</button>
+          <button id="tab-${mi}-docs" class="tab ${tab==='docs'?'on':''}" onclick="switchTab(${mi},'docs')">📋 문서/체크리스트</button>
+        </div>
+        <div id="tc-${mi}-budget" style="display:${tab==='budget'?'block':'none'}">${budgetHTML}</div>
+        <div id="tc-${mi}-docs" style="display:${tab==='docs'?'block':'none'}">${docsHTML}</div>
       </div>`;
-    }).join('');
-
-  const docHTML=subs.length===0
-    ?'<div class="empty"><div class="icon">📄</div><p>단위사업을 먼저 추가해주세요</p></div>'
-    :subs.map((sub,i)=>`
-      <div class="dc">
-        <div class="dc-name">${sub.name}</div>
-        <div class="dc-badges">
-          ${DOC_TYPES.map(dt=>{const st=sub.docs[dt]||'todo';return `
-            <div class="dc-bw"><div class="dc-bl">${dt}</div>
-            <span id="badge-${i}-${dt}" class="badge ${S_CLASS[st]}" onclick="cycleDoc(${i},'${dt}')">${S_LABEL[st]}</span>
-            </div>`;}).join('')}
-        </div>
-        <div class="dc-memo"><input value="${(sub.memo||'').replace(/"/g,'&quot;')}" placeholder="메모..." oninput="updateMemo(${i},this.value)"/></div>
-      </div>`).join('');
+  }).join('');
 
   document.getElementById('app').innerHTML=`
-    <div class="pbar">
-      <div><div class="pbar-name">${project.name}</div>${project.manager?`<div class="pbar-mgr">담당: ${project.manager}</div>`:''}</div>
-      <button class="btn-reset no-print" onclick="resetProject()">초기화</button>
-    </div>
-    <div class="summary" id="summaryGrid">
-      ${[['📌 단위사업',subs.length+'개','var(--p)'],['💵 전체 예산',fmt(tb),'var(--p)'],
-         ['🔴 총 지출',fmt(ts),'var(--red)'],['🟢 잔여',fmt(tb-ts),'var(--green)'],
-         ['✅ 문서 완료',dd+'건','var(--green)'],['⏳ 미작성',dt+'건','var(--red)']
-        ].map(([l,v,c])=>`<div class="sitem"><div class="slabel">${l}</div><div class="sval" style="color:${c}">${v}</div></div>`).join('')}
-    </div>
-    <div class="tabs no-print">
-      <button class="tab ${currentTab==='budget'?'on':''}" onclick="switchTab('budget')">💰 예산 현황</button>
-      <button class="tab ${currentTab==='docs'?'on':''}" onclick="switchTab('docs')">📄 문서 현황</button>
-    </div>
-    <div class="tc ${currentTab==='budget'?'on':''}" id="tc-budget">${budgetHTML}</div>
-    <div class="tc ${currentTab==='docs'?'on':''}" id="tc-docs">
-      <div class="no-print" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;font-size:.76rem;color:var(--sub);align-items:center">
-        <span class="badge b-done" style="width:auto;padding:3px 10px;font-size:.72rem">✔ 완료</span>
-        <span class="badge b-todo" style="width:auto;padding:3px 10px;font-size:.72rem">✘ 미작성</span>
-        <span class="badge b-none" style="width:auto;padding:3px 10px;font-size:.72rem">- 해당없음</span>
-        <span>탭하면 변경</span>
-      </div>
-      ${docHTML}
-    </div>
+    ${totalHTML}
+    ${majorsHTML}
+    ${majors.length===0?`<div class="empty" style="padding-top:60px"><div class="icon">📂</div><p style="font-size:.9rem">대사업을 추가해보세요!</p></div>`:''}
+    <button class="add-major-btn no-print" onclick="document.getElementById('majorName').value='';document.getElementById('majorMgr').value='';openSheet('addMajorOverlay')">＋ 대사업 추가</button>
     <div class="bnav no-print">
-      <button class="btn outline" onclick="switchTab('budget');scrollTo(0,0)">💰 예산</button>
-      <button class="btn green" onclick="document.getElementById('subName').value='';document.getElementById('subBudget').value='';document.getElementById('subTags').value='';openSheet('addSubOverlay')">＋ 사업추가</button>
-      <button class="btn outline" onclick="switchTab('docs');scrollTo(0,0)">📄 문서</button>
+      <button class="btn outline" onclick="document.getElementById('majorName').value='';document.getElementById('majorMgr').value='';openSheet('addMajorOverlay')">＋ 대사업</button>
+      <button class="btn accent" onclick="window.print()">🖨️ 인쇄</button>
+      <button class="btn" style="background:#334155" onclick="window.scrollTo(0,0)">▲ 위로</button>
     </div>`;
 }
 
-// 초기 실행 — 로컬 데이터 먼저 바로 보여줌
+// 초기 실행
 if(userCode){
   document.getElementById('logoutBtn').style.display='';
-  const local = localLoad();
-  project = local;
-  render();
-  // 백그라운드 Firebase 동기화
-  document.addEventListener('dbReady', async()=>{
-    if(window._dbReady && userCode){
-      try{
-        setSub('☁️ 동기화 중...');
-        const fresh = await withTimeout(window._dbLoad(userCode), 5000);
-        if(fresh){ project=fresh; localSave(fresh); render(); }
-        setSub('코드: '+userCode);
-      }catch(e){ setSub('코드: '+userCode); }
+  data=normalize(localLoad()); render();
+  document.addEventListener('dbReady',async()=>{
+    if(window._dbReady&&userCode){
+      try{ setSub('☁️ 동기화 중...'); const raw=await withTimeout(window._dbLoad(userCode),5000); if(raw){ data=normalize(raw); localSave(data); render(); } setSub('코드: '+userCode); }
+      catch(e){ setSub('코드: '+userCode); }
     }
   });
-} else {
-  render();
-}
+}else{ render(); }
 </script>
 </body>
 </html>
